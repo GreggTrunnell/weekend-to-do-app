@@ -2,6 +2,7 @@
 itemsList()
 
 
+
 function addItem(event){
     event.preventDefault();
     console.log("POST in client")
@@ -63,8 +64,9 @@ function deleteItem( id ){
         };
         if( readyToComplete ){
             itemToComplete.completed = false;
-        }
-      // Send the new artist to the server as data
+     }
+
+
         axios({
           method: 'PUT',
           url: '/todos',
@@ -78,15 +80,18 @@ function deleteItem( id ){
         });
       }
 
+
+    //! error says list of listOfToDos is not iterable need it to go
+    //!through an array. Most likely something to do with todo var in server
 function renderItems(listOfToDos){
     const toDoTableBody= document.getElementById("toDosList");
     //empty previous data
-    toDoTableBody.innerHTML = "";
+
     //add all to do items to the table
     for (let item of listOfToDos )
         toDoTableBody.innerHTML +=(`
     <tr>
-     <td> ${item}</td>
+     <td> ${item.text}</td>
      <tr>
      `)
 }
