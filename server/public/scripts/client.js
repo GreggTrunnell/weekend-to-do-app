@@ -1,5 +1,7 @@
 
-//
+itemsList()
+
+
 function addItem(event){
     event.preventDefault();
     console.log("POST in client")
@@ -75,5 +77,18 @@ function deleteItem( id ){
           alert('These items do not want to be updated')
         });
       }
+
+function renderItems(listOfToDos){
+    const toDoTableBody= document.getElementById("toDosList");
+    //empty previous data
+    toDoTableBody.innerHTML = "";
+    //add all to do items to the table
+    for (let item of listOfToDos )
+        toDoTableBody.innerHTML +=(`
+    <tr>
+     <td> ${item}</td>
+     <tr>
+     `)
+}
 
 
