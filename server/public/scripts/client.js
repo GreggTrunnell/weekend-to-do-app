@@ -50,6 +50,7 @@ function deleteItem( id ){
           url: '/todos'
         }).then((response)=> {
           console.log('Got items from GET in client', response.data);
+          //for rendering updated items need renderItems to have response.data
          renderItems(response.data);
         }).catch((error)=> {
           console.log('error in GET client', error);
@@ -82,19 +83,27 @@ function deleteItem( id ){
 
 
     //! error says list of listOfToDos is not iterable need it to go
-    //!through an array. Most likely something to do with todo var in server
+    //!through an array.
+    //listOfToDos was not iterable to do lack of (response.data)in the
+    //called renderItems in itemsList
 function renderItems(listOfToDos){
     const toDoTableBody= document.getElementById("toDosList");
     //empty previous data
     toDoTableBody.innerHTML = "";
-    //add all to do items to the table
-    for (let item of listOfToDos )
+    //loop through list items and render to the table
+    for (let item of listOfToDos ){
+
+     //?Need to write an if statement to check isComplete boolean
+     //?and populate table correctly
+    
+    
         toDoTableBody.innerHTML +=(`
     <tr>
      <td data-testid="toDoItem"> ${item.text}</td>
+     <td>${item.isComplete}</td>
      <td><button onclick="deleteItem(${item.id})">DELETE</td>
      <tr>
      `)
 }
-
+}
 

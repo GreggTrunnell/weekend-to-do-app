@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS "todos";
 CREATE TABLE "todos" (
 	"id" SERIAL PRIMARY KEY,
 	"text" TEXT,
-	"isComplete" BOOLEAN DEFAULT FALSE
+	"isComplete" BOOLEAN DEFAULT false
 );
 
 INSERT INTO "todos"
