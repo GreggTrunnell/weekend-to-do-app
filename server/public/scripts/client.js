@@ -57,16 +57,15 @@ function deleteItem( id ){
         });
     }
 
-    function toggleIsComplete( id, readyToComplete){
+    function toggleIsComplete( id, isComplete){
         console.log("ready to complete PUT in client")
         const itemToComplete = {
           id: id,
-          completed: true
+          isComplete: true
         };
-        if( readyToComplete ){
-            itemToComplete.completed = false;
+        if( isComplete ){
+            itemToComplete.isComplete = false;
      }
-
 
         axios({
           method: 'PUT',
@@ -75,7 +74,7 @@ function deleteItem( id ){
         }).then((response) =>{
           console.log("item in PUT client", response.data);
           itemsList();
-        }).catch(function(error) {
+        }).catch((error)=> {
           console.log('error in PUT client', error); 
           alert('These items do not want to be updated')
         });
@@ -95,12 +94,16 @@ function renderItems(listOfToDos){
 
      //?Need to write an if statement to check isComplete boolean
      //?and populate table correctly
-    
+  let isCompleteButton = "Completed";
+  if (item.isComplete){
+    isCompleteButton = "Not Complete"
+  }
     
         toDoTableBody.innerHTML +=(`
     <tr>
      <td data-testid="toDoItem"> ${item.text}</td>
-     <td>${item.isComplete}</td>
+ 
+    <td><button onClick="toggleIsComplete(${item.id},${item.isComplete})">${isCompleteButton}</td>
      <td><button onclick="deleteItem(${item.id})">DELETE</td>
      <tr>
      `)
