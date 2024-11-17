@@ -53,5 +53,18 @@ router.delete( '/', ( req, res )=>{
         })
   })
 
+  router.put( '/', ( req, res )=>{
+    console.log( '/todos PUT:', req.body );
+    const queryText = `UPDATE todos SET isComplete=$1 WHERE id=$2;`;
+    // this is the same newReady_To_Tramsfer in client PUT 
+    const values = [  req.body.isComplete , req.body.id  ];
+    // run pool.query
+    pool.query( queryText, values ).then( ( results )=>{
+        res.sendStatus( 200 ); // "OK"
+    }).catch( ( err )=>{
+        // handle any errors
+        console.log( err );
+        res.sendStatus( 400 );
+    })})
 
-module.exports = router;
+    module.exports = router;

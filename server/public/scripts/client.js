@@ -2,12 +2,13 @@
 itemsList()
 
 
-
+//!POST
 function addItem(event){
     event.preventDefault();
     console.log("POST in client")
         const newItem={
-            text: document.getElementById('toDoItem').value
+            text: document.getElementById('toDoItem').value,
+            isComplete: false,
         };
         axios({
             method: 'POST',
@@ -22,7 +23,7 @@ function addItem(event){
         });
     }
     
-    
+//!DELETE  
 function deleteItem( id ){
         console.log("DELETE in client", id );
         const itemToDelete = {
@@ -42,7 +43,7 @@ function deleteItem( id ){
       }
 
 
-
+//!GET
     function itemsList(){
         // get song data from the server
         axios({
@@ -56,7 +57,7 @@ function deleteItem( id ){
           console.log('error in GET client', error);
         });
     }
-
+//!PUT
     function toggleIsComplete( id, isComplete){
         console.log("ready to complete PUT in client")
         const itemToComplete = {
@@ -66,7 +67,6 @@ function deleteItem( id ){
         if( isComplete ){
             itemToComplete.isComplete = false;
      }
-
         axios({
           method: 'PUT',
           url: '/todos',
@@ -81,6 +81,7 @@ function deleteItem( id ){
       }
 
 
+//!RENDER
     //! error says list of listOfToDos is not iterable need it to go
     //!through an array.
     //listOfToDos was not iterable to do lack of (response.data)in the
@@ -94,19 +95,15 @@ function renderItems(listOfToDos){
 
      //?Need to write an if statement to check isComplete boolean
      //?and populate table correctly
-  let isCompleteButton = "Completed";
+  let isCompleteButton = "Not Complete";
   if (item.isComplete){
-    isCompleteButton = "Not Complete"
+    isCompleteButton = "Complete"
   }
-    
         toDoTableBody.innerHTML +=(`
     <tr>
-     <td data-testid="toDoItem"> ${item.text}</td>
- 
+    <td data-testid="toDoItem"> ${item.text}</td>
     <td><button onClick="toggleIsComplete(${item.id},${item.isComplete})">${isCompleteButton}</td>
-     <td><button onclick="deleteItem(${item.id})">DELETE</td>
+     <td><button data-testid="deleteButton" onclick="deleteItem(${item.id})">DELETE</td>
      <tr>
-     `)
-}
-}
+     `)}}
 
