@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="./scripts/axios.js"></script>
-  <script src="./scripts/client.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="./scripts/axios.js"></script>
+  <script defer src="./scripts/client.js"></script>
   <title>SQL TO-DO List</title>
 </head>
 <body>
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
+<main>
+  <section>
+    <form>
+      <input type="text" id="todoItem" data-testid="toDoTextInput" placeholder="Add To Do"> 
+    </form>
+    <table>
+      <thead></thead>
+    </table>
+  </section>
 
+</main>
 </body>
 </html>
