@@ -50,7 +50,7 @@ function deleteItem( id ){
           url: '/todos'
         }).then((response)=> {
           console.log('Got items from GET in client', response.data);
-          renderItems();
+         renderItems(response.data);
         }).catch((error)=> {
           console.log('error in GET client', error);
         });
@@ -86,12 +86,13 @@ function deleteItem( id ){
 function renderItems(listOfToDos){
     const toDoTableBody= document.getElementById("toDosList");
     //empty previous data
-
+    toDoTableBody.innerHTML = "";
     //add all to do items to the table
     for (let item of listOfToDos )
         toDoTableBody.innerHTML +=(`
     <tr>
-     <td> ${item.text}</td>
+     <td data-testid="toDoItem"> ${item.text}</td>
+     <td><button onclick="deleteItem(${item.id})">DELETE</td>
      <tr>
      `)
 }
