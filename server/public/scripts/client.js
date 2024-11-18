@@ -64,9 +64,6 @@ function deleteItem( id ){
           id: id,
           isComplete: complete,
         };
-    //     if( isComplete ){
-    //         itemToComplete.isComplete = false;
-    //  }
    
       if(complete){
         itemToComplete.isComplete = false

@@ -1,5 +1,5 @@
 /* 
-table {
+/* table {
     border: 1px solid;
     border-collapse: separate;
     border-radius: 10px;
@@ -17,7 +17,7 @@ table {
     border: 1px;
     text-align: left;
   }
-  tr:nth-child(even) {background-color: tan;}
+  tr:nth-child(even) {background-color: tan;} */
   /* Got this while looking stuff up on W3 schools */
   tr:hover {background-color: teal;}
 
