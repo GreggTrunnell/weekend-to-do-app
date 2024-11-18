@@ -1,4 +1,4 @@
-//! may need to change one of these if not functioning
+
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
@@ -41,6 +41,8 @@ router.post('/',  (req, res) => {
 router.delete( '/', ( req, res )=>{
     console.log( 'delete from router', req.body );
         // assemble query
+//!this functions properly with out quotes around todos. not sure why i need it
+//!for router.put
         const queryText = `DELETE FROM todos WHERE id=$1;`;
         const values = [ req.body.id ];
         // run pool.query
@@ -55,6 +57,7 @@ router.delete( '/', ( req, res )=>{
 
   router.put( '/', ( req, res )=>{
     console.log( '/todos PUT:', req.body );
+    //!needed quotes around isComplete and id to target properly
     const queryText = `UPDATE todos SET "isComplete"=$1 WHERE "id"=$2;`;
     // this is the same newReady_To_Tramsfer in client PUT 
     const values = [  req.body.isComplete , req.body.id  ];

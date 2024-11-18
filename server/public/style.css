@@ -1,6 +1,6 @@
-/* 
-/* table {
-    border: 1px solid;
+
+table {
+    border: 10px solid;
     border-collapse: separate;
     border-radius: 10px;
     margin-left: auto;
@@ -13,13 +13,13 @@
   }
 
   thead {
-    background-color: lightgrey;
+    background-color: rgb(122, 59, 59);
     border: 1px;
     text-align: left;
   }
-  tr:nth-child(even) {background-color: tan;} */
-  /* Got this while looking stuff up on W3 schools */
-  tr:hover {background-color: teal;}
+  tr:nth-child(even) {background-color: tan;}
+
+ tbody tr:hover {background-color: rgb(184, 186, 205);}
 
   th, td {
     padding: 12px 15px;
@@ -27,7 +27,8 @@
 
   tbody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(14, 73, 9);
   }
   body{
-    background-color: turquoise;
-  } */
+    background-color: rgb(190, 163, 41);
+  }

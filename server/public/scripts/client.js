@@ -86,8 +86,6 @@ function deleteItem( id ){
 
 
 //!RENDER
-    //! error says list of listOfToDos is not iterable need it to go
-    //!through an array.
     //listOfToDos was not iterable to do lack of (response.data)in the
     //called renderItems in itemsList
 function renderItems(listOfToDos){
