@@ -3,6 +3,13 @@ font-size: 100px;
 color:rgb(221, 81, 11);
 font-weight: 3000;
 }
+.itemsBox {
+    border:rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+.notComplete{
+    background-color: red;}
+
 table {
     border: 10px solid;
     border-collapse: separate;
@@ -20,6 +27,7 @@ table {
     background-color: rgb(122, 59, 59);
     border: 1px;
     text-align: left;
+    font-size: 30px;
   }
   tr:nth-child(even) {background-color: tan;}
 
@@ -31,7 +39,7 @@ table {
 
   tbody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(14, 73, 9);
+    background-color: rgb(41, 109, 35);
   }
   body{
     background-color: rgb(190, 163, 41);

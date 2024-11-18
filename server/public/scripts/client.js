@@ -104,7 +104,7 @@ function renderItems(listOfToDos){
         toDoTableBody.innerHTML +=(`
     <tr data-testid="toDoItem">
     <td> ${item.text}</td>
-    <td><button onClick="toggleIsComplete(${item.id},${item.isComplete})">${isCompleteButton}</td>
+    <td><button data-testid="completeButton" onClick="toggleIsComplete(${item.id},${item.isComplete})">${isCompleteButton}</td>
      <td><button data-testid="deleteButton" onclick="deleteItem(${item.id})">DELETE</td>
      <tr>
      `)}}
