@@ -58,15 +58,22 @@ function deleteItem( id ){
         });
     }
 //!PUT
-    function toggleIsComplete( id, isComplete){
+    function toggleIsComplete( id, complete){
         console.log("ready to complete PUT in client")
         const itemToComplete = {
           id: id,
-          isComplete: true
+          isComplete: complete,
         };
-        if( isComplete ){
-            itemToComplete.isComplete = false;
-     }
+    //     if( isComplete ){
+    //         itemToComplete.isComplete = false;
+    //  }
+   
+      if(complete){
+        itemToComplete.isComplete = false
+      } else {
+        itemToComplete.isComplete = true
+      }
+
         axios({
           method: 'PUT',
           url: '/todos',
@@ -100,8 +107,8 @@ function renderItems(listOfToDos){
     isCompleteButton = "Complete"
   }
         toDoTableBody.innerHTML +=(`
-    <tr>
-    <td data-testid="toDoItem"> ${item.text}</td>
+    <tr data-testid="toDoItem">
+    <td> ${item.text}</td>
     <td><button onClick="toggleIsComplete(${item.id},${item.isComplete})">${isCompleteButton}</td>
      <td><button data-testid="deleteButton" onclick="deleteItem(${item.id})">DELETE</td>
      <tr>

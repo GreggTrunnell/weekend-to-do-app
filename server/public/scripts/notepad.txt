@@ -1,0 +1,51 @@
+function toggleReadyToTransfer( id, ready_to_transfer){
+  console.log("Activated Ready to Transfer")
+  const koalaToSend = {
+    id: id,
+    newReady_to_transfer: true
+  };
+  if( ready_to_transfer ){
+    koalaToSend.newReady_to_transfer = false;
+  }
+
+  // Send the new artist to the server as data
+  axios({
+    method: 'PUT',
+    url: '/koalas',
+    data: koalaToSend
+  }).then(function(response) {
+    console.log(response.data);
+    getKoalas();
+  }).catch(function(error) {
+    console.log('error in Koalas update', error); 
+    alert('Error updating Koala. Please try again later.')       
+  });
+}
+function renderKoalas(listOfKoalas) {
+  // Store selector in variable
+  const koalaTableBody = document.getElementById('viewKoalas');
+
+  // Empty previous data
+  koalaTableBody.innerHTML = '';
+
+  // Add all artists to table
+  // updated the function to end the } at the end
+  for (let koala of listOfKoalas) {
+
+  let transferButton = 'Ready to Transfer'
+  if (koala.ready_to_transfer) {
+    transferButton = "Transferred"
+  }
+   koalaTableBody.innerHTML += (`
+      <tr>
+        <td>${koala.name}</td>
+        <td>${koala.age}</td>
+        <td>${koala.favorite_color}</td>
+        <td>${koala.ready_to_transfer}</td>
+        <td><button onClick="toggleReadyToTransfer(${koala.id},${koala.ready_to_transfer})">${transferButton}</td>
+        <td>${koala.notes}</td>
+        <td><button onclick="deleteKoalas(${koala.id})">DELETE</td>
+      </tr>`
+    );
+  }
+}
